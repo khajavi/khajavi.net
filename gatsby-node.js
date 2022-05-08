@@ -4,8 +4,36 @@ const { createFilePath } = require(`gatsby-source-filesystem`)
 exports.createPages = async ({ graphql, actions, reporter }) => {
   const { createPage } = actions
 
+  const { data } = await graphql(
+    `
+      {
+        allOrgContent(
+          sort: { fields: [metadata___date], order: ASC }
+          limit: 1000
+        ) {
+          nodes {
+            id
+            slug
+            metadata {
+              title
+            }
+          }
+        }
+      }
+    `
+  )
+
+  data.allOrgContent.nodes.forEach(node => {
+    console.log(node.slug)
+    actions.createPage({
+      path: node.slug, // path: "/projects" + node.slug,
+      component: path.resolve(`./src/templates/org-posts.js`),
+      context: { slug: node.slug },
+    })
+  })
+
   // Define a template for blog post
-  const blogPost = path.resolve(`./src/templates/blog-post.js`)
+  const blogPost = path.resolve(`./src/templates/md-posts.js`)
 
   // Get all markdown blog posts sorted by date
   const result = await graphql(

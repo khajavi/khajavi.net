@@ -1,14 +1,14 @@
 module.exports = {
   siteMetadata: {
-    title: `Gatsby Starter Blog`,
+    title: `Milad Khajavi's Blog`,
     author: {
-      name: `Kyle Mathews`,
-      summary: `who lives and works in San Francisco building useful things.`,
+      name: `Milad Khajavi`,
+      summary: `My personal blog about software development and life.`,
     },
-    description: `A starter blog demonstrating what Gatsby can do.`,
-    siteUrl: `https://gatsbystarterblogsource.gatsbyjs.io/`,
+    description: `My personal blog about software development and life.`,
+    siteUrl: `https://blog.khajavi.ir`,
     social: {
-      twitter: `kylemathews`,
+      twitter: `khajavi`,
     },
   },
   plugins: [

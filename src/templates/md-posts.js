@@ -1,5 +1,5 @@
 import * as React from "react"
-import { Link, graphql } from "gatsby"
+import { graphql, Link } from "gatsby"
 
 import Bio from "../components/bio"
 import Layout from "../components/layout"
@@ -31,7 +31,7 @@ const BlogPostTemplate = ({ data, location }) => {
         />
         <hr />
         <footer>
-          <Bio />
+          {/*<Bio />*/}
         </footer>
       </article>
       <nav className="blog-post-nav">
@@ -101,6 +101,25 @@ export const pageQuery = graphql`
       }
       frontmatter {
         title
+      }
+    }
+    orgContent (id: { eq: $id }) {
+      id
+      excerpt
+      html
+      metadata {
+        title
+        date(formatString: "MMMM DD, YYYY")
+      }
+    }
+    prev: orgContent(id: {eq: $previousPostId}) {
+      metadata {
+        title
+      }
+    }
+    nxt: orgContent(id: {eq: $nextPostId}) {
+      metadata {
+          title
       }
     }
   }
