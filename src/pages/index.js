@@ -9,6 +9,28 @@ const BlogIndex = ({ data, location }) => {
   const siteTitle = data.site.siteMetadata?.title || `Title`
   const posts = data.allMarkdownRemark.nodes
 
+  const orgPosts = data.allOrgContent.edges
+  const _posts = orgPosts.map(({ node }) => {
+    const title = node.metadata.title || node.fields.slug
+    const date = node.metadata.date || "no date"
+    return (
+      <div>
+        <h3 style={{ marginBottom: "0.2em" }}>
+          <Link to={node.slug}>{title}</Link>
+        </h3>
+        <small>{date}</small>
+        <section>
+          <p
+            dangerouslySetInnerHTML={{
+              __html: node.html,
+            }}
+            itemProp="description"
+          />
+        </section>
+      </div>
+    )
+  })
+
   if (posts.length === 0) {
     return (
       <Layout location={location} title={siteTitle}>
@@ -27,6 +49,7 @@ const BlogIndex = ({ data, location }) => {
     <Layout location={location} title={siteTitle}>
       <Seo title="All posts" />
       <Bio />
+      {<div>{_posts}</div>}
       <ol style={{ listStyle: `none` }}>
         {posts.map(post => {
           const title = post.frontmatter.title || post.fields.slug
@@ -82,6 +105,20 @@ export const pageQuery = graphql`
           date(formatString: "MMMM DD, YYYY")
           title
           description
+        }
+      }
+    }
+    allOrgContent(sort: { fields: [metadata___date], order: DESC }) {
+      edges {
+        node {
+          slug
+          html
+          excerpt
+          id
+          metadata {
+            title
+            date
+          }
         }
       }
     }
