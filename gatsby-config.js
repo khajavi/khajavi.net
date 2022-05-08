@@ -12,6 +12,13 @@ module.exports = {
     },
   },
   plugins: [
+    {
+      resolve: `gatsby-transformer-orga`,
+      options: {
+          // if you don't want to have server side prism code highlight
+          // noHighlight: true,
+      },
+    },
     `gatsby-plugin-image`,
     {
       resolve: `gatsby-source-filesystem`,
