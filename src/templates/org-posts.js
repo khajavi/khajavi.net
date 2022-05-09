@@ -17,8 +17,8 @@ export default function orgPosts({ data }) {
 }
 
 export const query = graphql`
-  query ProjectPages($slug: String!) {
-    orgContent(slug: { eq: $slug }) {
+  query ProjectPages($title: String!) {
+    orgContent(metadata: { title: { eq: $title } }) {
       html
       slug
       metadata {
