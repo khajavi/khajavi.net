@@ -1,5 +1,13 @@
 /* CSS Custom Properties Definitions */
 
+@font-face {
+  font-family: Vazirmatn RD;
+  src: url('https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v32.102/Round-Dots/fonts/webfonts/Vazirmatn-RD[wght].woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
 :root {
   --maxWidth-none: "none";
   --maxWidth-xs: 20rem;
@@ -78,7 +86,7 @@ html {
 }
 
 body {
-  font-family: var(--font-body);
+  font-family: "VazirMatn RD";
   font-size: var(--fontSize-1);
   color: var(--color-text);
 }
