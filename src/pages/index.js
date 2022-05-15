@@ -11,21 +11,23 @@ const BlogIndex = ({ data, location }) => {
   const _posts = orgPosts.map(({ node }) => {
     const title = node.metadata.title || node.fields.slug
     const date = node.metadata.date || "no date"
-    let url = (node.slug.charAt(1) !== '-') ? node.slug : encodeURIComponent(title)
+    let url = node.metadata.slug 
+    console.log("Hello, World")
+    console.log("url", url)
     return (
       <div>
         <h3 style={{ marginBottom: "0.2em" }}>
           <Link to={url}>{title}</Link>
         </h3>
         <small>{date}</small>
-        <section>
-          <p
-            dangerouslySetInnerHTML={{
-              __html: node.html,
-            }}
-            itemProp="description"
-          />
-        </section>
+        {/*<section>*/}
+        {/*  <p*/}
+        {/*    dangerouslySetInnerHTML={{*/}
+        {/*      __html: node.html,*/}
+        {/*    }}*/}
+        {/*    itemProp="description"*/}
+        {/*  />*/}
+        {/*</section>*/}
       </div>
     )
   })
@@ -117,6 +119,7 @@ export const pageQuery = graphql`
           metadata {
             title
             date
+            slug
           }
         }
       }

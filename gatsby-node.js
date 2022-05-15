@@ -16,6 +16,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
             slug
             metadata {
               title
+              slug
             }
           }
         }
@@ -25,15 +26,12 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
 
   data.allOrgContent.nodes.forEach(node => {
     console.log(node.metadata.title)
-    let slug =
-      node.slug.charAt(1) !== "-"
-        ? node.slug
-        : decodeURIComponent(node.metadata.title)
+    let slug = node.metadata.slug ? node.metadata.slug : node.slug
 
     actions.createPage({
       path: slug, // path: "/projects" + node.slug,
       component: path.resolve(`./src/templates/org-posts.js`),
-      context: { slug: node.slug, title: node.metadata.title },
+      context: { slug: slug, title: node.metadata.title },
     })
   })
 

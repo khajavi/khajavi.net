@@ -17,12 +17,12 @@ export default function orgPosts({ data }) {
 }
 
 export const query = graphql`
-  query ProjectPages($title: String!) {
-    orgContent(metadata: { title: { eq: $title } }) {
+  query ProjectPages($slug: String!) {
+    orgContent(metadata: { slug: { eq: $slug } }) {
       html
-      slug
       metadata {
         title
+        slug
       }
     }
   }
