@@ -12,8 +12,6 @@ const BlogIndex = ({ data, location }) => {
     const title = node.metadata.title || node.fields.slug
     const date = node.metadata.date || "no date"
     let url = node.metadata.slug 
-    console.log("Hello, World")
-    console.log("url", url)
     return (
       <div>
         <h3 style={{ marginBottom: "0.2em" }} dir="auto">
