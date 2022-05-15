@@ -16,7 +16,7 @@ const BlogIndex = ({ data, location }) => {
     console.log("url", url)
     return (
       <div>
-        <h3 style={{ marginBottom: "0.2em" }}>
+        <h3 style={{ marginBottom: "0.2em" }} dir="auto">
           <Link to={url}>{title}</Link>
         </h3>
         <small>{date}</small>
