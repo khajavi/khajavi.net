@@ -11,22 +11,11 @@ const BlogIndex = ({ data, location }) => {
   const _posts = orgPosts.map(({ node }) => {
     const title = node.metadata.title || node.fields.slug
     const date = node.metadata.date || "no date"
-    let url = node.metadata.slug 
+    let url = node.metadata.slug
     return (
-      <div>
-        <h3 style={{ marginBottom: "0.2em" }} dir="auto">
-          <Link to={url}>{title}</Link>
-        </h3>
-        <small>{date}</small>
-        {/*<section>*/}
-        {/*  <p*/}
-        {/*    dangerouslySetInnerHTML={{*/}
-        {/*      __html: node.html,*/}
-        {/*    }}*/}
-        {/*    itemProp="description"*/}
-        {/*  />*/}
-        {/*</section>*/}
-      </div>
+        <li style={{ marginBottom: "0.2em" }}>
+          <Link to={url}>{title}</Link>{/* -- <small>{date}</small>*/}
+        </li>
     )
   })
 
@@ -48,7 +37,7 @@ const BlogIndex = ({ data, location }) => {
     <Layout location={location} title={siteTitle}>
       <Seo title="All posts" />
       {/*<Bio />*/}
-      {<div>{_posts}</div>}
+      {<ol dir="auto">{_posts}</ol>}
       <ol style={{ listStyle: `none` }}>
         {posts.map(post => {
           const title = post.frontmatter.title || post.fields.slug
