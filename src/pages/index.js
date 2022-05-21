@@ -96,7 +96,7 @@ export const pageQuery = graphql`
         }
       }
     }
-    allOrgContent(sort: { fields: [metadata___date], order: DESC }) {
+    allOrgContent(sort: {fields: [metadata___date], order: DESC}, filter: {metadata: {tags : {eq : "technical"}}}) {
       edges {
         node {
           slug
