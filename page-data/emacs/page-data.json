@@ -1,0 +1,5 @@
+{
+    "componentChunkName": "component---src-templates-org-posts-js",
+    "path": "/emacs",
+    "result": {"data":{"orgContent":{"html":"<div class=\"section\"><h2>Copilot </h2><ul><li><a href=\"https://github.com/zerolfx/copilot.el\">zerolfx/copilot.el: An unofficial Copilot plugin for Emacs.</a> </li><li><a href=\"https://github.com/abo-abo/org-download\">abo-abo/org-download: Drag and drop images to Emacs org-mode</a> </li></ul></div>","metadata":{"title":"Emacs","slug":"emacs"}},"site":{"siteMetadata":{"title":"Milad Khajavi's Notes"}}},"pageContext":{"slug":"emacs","title":"Emacs"}},
+    "staticQueryHashes": []}
